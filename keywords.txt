@@ -1,0 +1,85 @@
+#######################################
+# Syntax Coloring Map For TDA743X
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+TDA743X KEYWORD1 
+TDA7430 KEYWORD1 
+TDA7431 KEYWORD1 
+TDA7432 KEYWORD2 
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+UseValue KEYWORD2
+Input	KEYWORD2
+Volume	KEYWORD2
+Bass	KEYWORD2
+Middle	KEYWORD2
+Treble	KEYWORD2
+Balance	KEYWORD2
+NaturalBase	KEYWORD2
+EnableNaturalBase	KEYWORD2
+DisableNaturalBase	KEYWORD2
+RearSwitch	KEYWORD2
+EnableRear	KEYWORD2
+DisableRear	KEYWORD2
+SurroundMode	KEYWORD2
+Surround_SIMULATED	KEYWORD2
+Surround_MUSIC	KEYWORD2
+Surround_MOVIE	KEYWORD2
+Surround_OFF	KEYWORD2
+EffectControl	KEYWORD2
+PhaseResistor	KEYWORD2
+VoiceCanceller	KEYWORD2
+DisableVoiceCanceller	KEYWORD2
+EnableVoiceCanceller	KEYWORD2
+SelectorRecOut	KEYWORD2
+RecOut_3BAND	KEYWORD2
+RecOut_SURR	KEYWORD2
+RecOut_REAR	KEYWORD2
+RecOut_OFF	KEYWORD2
+RecOut_FLAT	KEYWORD2
+Mute	KEYWORD2
+DisableMute	KEYWORD2
+EnableMute	KEYWORD2
+Loudness	KEYWORD2
+ModeLoudness	KEYWORD2
+EnableModeLoudness	KEYWORD2
+DisableModeLoudness	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
+Surr_SIMULATED LITERAL1
+Surr_MUSIC	LITERAL1
+Surr_MOVIE	LITERAL1
+Surr_OFF	LITERAL1
+Out_3BAND	LITERAL1
+Out_SURR 	LITERAL1
+Out_REAR	LITERAL1
+Out_OFF 	LITERAL1
+Out_FLAT	LITERAL1
+ATT_LR	LITERAL1
+ATT_RR	LITERAL1
+ATT_LF	LITERAL1
+ATT_RF	LITERAL1
+REAR_ACTIVE	LITERAL1
+REAR_OFF	LITERAL1
+NATURALBASE_ACTIVE	LITERAL1
+NATURALBASE_OFF	LITERAL1
+VOICECANCELLER_OFF	LITERAL1
+VOICECANCELLER_ON	LITERAL1
+RecOut_L	LITERAL1
+RecOut_R	LITERAL1
+Use_NEGATIVE	LITERAL1
+Use_POSITIVE	LITERAL1
+MUTE_OFF	LITERAL1
+MUTE_ON		LITERAL1
+Loudness_ON	LITERAL1
+Loudness_OFF	LITERAL1
