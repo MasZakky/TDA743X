@@ -1,31 +1,31 @@
-#ifndef _TDA743X_H
-#define _TDA743X_H
+#ifndef _TDA743X_H_
+#define _TDA743X_H_
 
 #include "Arduino.h"
 
 #include "SendTrans.h"
 
- #if defined(Surround_SIMULATED) || defined(Surround_SIMULATED) || defined(Surround_MOVIE) || defined(Surround_OFF)
-   #undef Surround_SIMULATED 
-   #undef Surround_MUSIC     
-   #undef Surround_MOVIE     
-   #undef Surround_OFF      
+ #if defined(Surr_SIMULATED) || defined(Surr_MUSIC) || defined(Surr_MOVIE) || defined(Surr_OFF)
+   #undef Surr_SIMULATED 
+   #undef Surr_MUSIC     
+   #undef Surr_MOVIE     
+   #undef Surr_OFF      
  #endif
-   #define Surround_SIMULATED 0
-   #define Surround_MUSIC     1
-   #define Surround_MOVIE     3
-   #define Surround_OFF       2
+   #define Surr_SIMULATED 0
+   #define Surr_MUSIC     1
+   #define Surr_MOVIE     3
+   #define Surr_OFF       2
 
- #if  defined(RecOut_3BAND) || defined(RecOut_SURR) ||  defined(RecOut_REAR) || defined(RecOut_OFF)
-   #undef RecOut_3BAND       
-   #undef RecOut_SURR       
-   #undef RecOut_REAR        
-   #undef RecOut_OFF         
+ #if  defined(Out_3BAND) || defined(Out_SURR) ||  defined(Out_REAR) || defined(Out_OFF)
+   #undef Out_3BAND       
+   #undef Out_SURR       
+   #undef Out_REAR        
+   #undef Out_OFF         
  #endif
-   #define RecOut_3BAND       0
-   #define RecOut_SURR        1
-   #define RecOut_REAR        2
-   #define RecOut_OFF         3
+   #define Out_3BAND       0
+   #define Out_SURR        1
+   #define Out_REAR        2
+   #define Out_OFF         3
    
  #if defined(ATT_LR)|| defined(ATT_RR) || defined(ATT_LF) || defined(ATT_RF)
    #undef ATT_LR
@@ -33,31 +33,31 @@
    #undef ATT_LF
    #undef ATT_RF
   #endif
-  #define ATT_LR 2
-  #define ATT_RR 3
-  #define ATT_LF 0
-  #define ATT_RF 1
+    #define ATT_LR 2
+    #define ATT_RR 3
+    #define ATT_LF 0
+    #define ATT_RF 1
   
   #if defined(REAR_ACTIVE) || defined(REAR_OFF)
    #undef REAR_ACTIVE
    #undef REAR_OFF
   #endif
-  #define REAR_ACTIVE 0
-  #define REAR_OFF    1
+    #define REAR_ACTIVE 0
+    #define REAR_OFF    1
   
   #if defined(NATURALBASE_ACTIVE) || defined(NATURALBASE_OFF)
    #undef NATURALBASE_ACTIVE
    #undef NATURALBASE_OFF
   #endif
-  #define NATURALBASE_ACTIVE 0
-  #define NATURALBASE_OFF    1
+    #define NATURALBASE_ACTIVE 0
+    #define NATURALBASE_OFF    1
 
   #if defined(OICECANCELLER_OFF) || defined(VOICECANCELLER_ON)
    #undef VOICECANCELLER_OFF
    #undef VOICECANCELLER_ON
   #endif
-  #define VOICECANCELLER_OFF 0
-  #define VOICECANCELLER_ON  1
+    #define VOICECANCELLER_OFF 0
+    #define VOICECANCELLER_ON  1
   
   #if defined(Out_3BAND) || defined(Out_SURR) || defined(Out_REAR) || defined(Out_FLAT)
    #undef Out_3BAND
@@ -66,23 +66,43 @@
    #undef Out_FLAT
    #undef Out_OFF
   #endif
-  #define Out_3BAND 0
-  #define Out_SURR  1
-  #define Out_REAR  2
-  #define Out_FLAT  3
-  #define Out_OFF   3
+    #define Out_3BAND 0
+    #define Out_SURR  1
+    #define Out_REAR  2
+    #define Out_FLAT  3
+    #define Out_OFF   3
 
   #if defined(RecOut_L) || defined(RecOut_R)
    #undef RecOut_L
    #undef RecOut_R
   #endif
-  #defined RecOut_L 0
-  #defined RecOut_R 1
+    #define RecOut_L 0
+    #define RecOut_R 1
+  
+  #if defined(Use_NEGATIVE) || defined(Use_POSITIVE)
+    #undef Use_NEGATIVE 
+    #undef Use_POSITIVE 
+  #endif
+    #define Use_NEGATIVE -1
+    #define Use_POSITIVE 1
+
+  #if defined(MUTE_OFF) || defined(MUTE_ON)
+    #undef MUTE_OFF  
+    #undef MUTE_ON 
+  #endif
+    #define MUTE_OFF  0
+    #define MUTE_ON   1
+  
+  #if defined(Loudness_ON) || defined(Loudness_OFF)
+    #undef Loudness_ON
+    #undef Loudness_OFF
+  #endif
+    #define Loudness_ON 0
+    #define Loudness_OFF 1
+    
   
   #define AddrTDA7430 0x80
   
-  #define Use_NEGATIVE -1
-  #define Use_POSITIVE 1
   
 class TDA7430 :public SendTransI2C{
   public:
@@ -131,8 +151,8 @@ class TDA7430 :public SendTransI2C{
 //   int8_t PhaseResistor4(int8_t val);    // 0 - 3
 
   int8_t VoiceCanceller(int8_t val);    //VoiceCanceler
-  int8_t DisableVoiceCanceller():       //Disable
-  int8_t EnableVoiceCanceller();        //Input
+  int8_t DisableVoiceCanceller();       //Disable
+  int8_t EnableVoiceCanceller();        //Enable
 
   int8_t SelectorRecOut(int8_t val);    // value
   int8_t SelectorRecOut(int8_t val,     // Value
@@ -143,9 +163,14 @@ class TDA7430 :public SendTransI2C{
   int8_t RecOut_OFF();                  // Off
   int8_t RecOut_FLAT();                 // Flat
 
-  private :
+  int8_t Mute(int8_t val);
+  int8_t Mute(int8_t val,int8_t val2);
+  int8_t DisableMute();
+  int8_t EnableMute();
+
+  protected:
     byte _DATA[10];
-    int16_t Constrain(int16_t val,int8_t val2,int8_t val3);
+    int16_t Constrain(int16_t val,int16_t val2,int16_t val3);
     int8_t MaxInput(int8_t val = 4);
     int8_t _MInput;
     int8_t _UPN;
@@ -153,7 +178,36 @@ class TDA7430 :public SendTransI2C{
 
 class TDA7431 :public TDA7430{
   public :
-  private :
+  protected:
     int8_t MaxInput(int8_t val = 1);
+};
+
+class TDA7432 :public SendTransI2C{
+  public:
+    int8_t Volume(int8_t val);
+    int8_t Bass(int8_t val);
+    int8_t Treble(int8_t val);
+
+    int8_t UseValue(int8_t val = Use_POSITIVE);
+        
+    int8_t Balance(int8_t val);
+    int8_t Balance(int8_t val,int8_t val2);
+
+    int8_t Input(int8_t val);
+
+    int8_t Mute(int8_t val);
+    int8_t Mute(int8_t val,int8_t val2);
+    int8_t DisableMute();
+    int8_t EnableMute();
+
+    int8_t Loudness(int8_t val);
+    int8_t ModeLoudness(int8_t val);
+    int8_t EnableModeLoudness();
+    int8_t DisableModeLoudness();
+    
+  protected:
+    byte _DATA[8];
+    int16_t Constrain(int16_t val,int16_t val2,int16_t val3);
+    int8_t _UPN,_EBass;
 };
 #endif
