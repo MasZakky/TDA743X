@@ -16,17 +16,6 @@
    #define Surr_MOVIE     3
    #define Surr_OFF       2
 
- #if  defined(Out_3BAND) || defined(Out_SURR) ||  defined(Out_REAR) || defined(Out_OFF)
-   #undef Out_3BAND       
-   #undef Out_SURR       
-   #undef Out_REAR        
-   #undef Out_OFF         
- #endif
-   #define Out_3BAND       0
-   #define Out_SURR        1
-   #define Out_REAR        2
-   #define Out_OFF         3
-   
  #if defined(ATT_LR)|| defined(ATT_RR) || defined(ATT_LF) || defined(ATT_RF)
    #undef ATT_LR
    #undef ATT_RR
