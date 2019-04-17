@@ -4,6 +4,7 @@
 #include "Arduino.h"
 
 #include "SendTrans.h"
+
  #if defined(Surround_SIMULATED) || defined(Surround_SIMULATED) || defined(Surround_MOVIE) || defined(Surround_OFF)
    #undef Surround_SIMULATED 
    #undef Surround_MUSIC     
