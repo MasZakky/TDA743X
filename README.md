@@ -8,8 +8,12 @@ void setup(){ </br>
   Wire.begin(); </br>
   Serial.begin(9600); </br>
   int value = uPA.begin(); </br>
-  if(value != Process_OK){ </br>
+  if(value == Process_OK){ </br>
+    Serial.println("Process_OK");  </br>
     return; </br>
+  } // if </br>
+  else{ </br>
+    Serial.println("Process_ERROR"); </br>
   } </br>
 } </br>
 </br>
