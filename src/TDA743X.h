@@ -38,8 +38,49 @@
   #define ATT_LF 0
   #define ATT_RF 1
   
-  #define AddrTDA7430 0x80
+  #if defined(REAR_ACTIVE) || defined(REAR_OFF)
+   #undef REAR_ACTIVE
+   #undef REAR_OFF
+  #endif
+  #define REAR_ACTIVE 0
+  #define REAR_OFF    1
+  
+  #if defined(NATURALBASE_ACTIVE) || defined(NATURALBASE_OFF)
+   #undef NATURALBASE_ACTIVE
+   #undef NATURALBASE_OFF
+  #endif
+  #define NATURALBASE_ACTIVE 0
+  #define NATURALBASE_OFF    1
 
+  #if defined(OICECANCELLER_OFF) || defined(VOICECANCELLER_ON)
+   #undef VOICECANCELLER_OFF
+   #undef VOICECANCELLER_ON
+  #endif
+  #define VOICECANCELLER_OFF 0
+  #define VOICECANCELLER_ON  1
+  
+  #if defined(Out_3BAND) || defined(Out_SURR) || defined(Out_REAR) || defined(Out_FLAT)
+   #undef Out_3BAND
+   #undef Out_SURR
+   #undef Out_REAR
+   #undef Out_FLAT
+   #undef Out_OFF
+  #endif
+  #define Out_3BAND 0
+  #define Out_SURR  1
+  #define Out_REAR  2
+  #define Out_FLAT  3
+  #define Out_OFF   3
+
+  #if defined(RecOut_L) || defined(RecOut_R)
+   #undef RecOut_L
+   #undef RecOut_R
+  #endif
+  #defined RecOut_L 0
+  #defined RecOut_R 1
+  
+  #define AddrTDA7430 0x80
+  
   #define Use_NEGATIVE -1
   #define Use_POSITIVE 1
   
@@ -47,7 +88,7 @@ class TDA7430 :public SendTransI2C{
   public:
   
   int8_t begin();             //
-  int8_t begin(byte Address); //Address  
+  int8_t begin(byte Address = AddrTDA7430); //Address  
   int8_t begin(byte Address,  //Address
                byte Addr);    //Channel
 
@@ -84,10 +125,10 @@ class TDA7430 :public SendTransI2C{
                        int8_t val1,     // 0 - 3
                        int8_t val2,     // 0 - 3
                        int8_t val3);    // 0 - 3
-  int8_t PhaseResistor1(int8_t val);    // 0 - 3
-  int8_t PhaseResistor2(int8_t val);    // 0 - 3
-  int8_t PhaseResistor3(int8_t val);    // 0 - 3
-  int8_t PhaseResistor4(int8_t val);    // 0 - 3
+//   int8_t PhaseResistor1(int8_t val);    // 0 - 3
+//   int8_t PhaseResistor2(int8_t val);    // 0 - 3
+//   int8_t PhaseResistor3(int8_t val);    // 0 - 3
+//   int8_t PhaseResistor4(int8_t val);    // 0 - 3
 
   int8_t VoiceCanceller(int8_t val);    //VoiceCanceler
   int8_t DisableVoiceCanceller():       //Disable
@@ -100,6 +141,7 @@ class TDA7430 :public SendTransI2C{
   int8_t RecOut_SURR();                 // Surr
   int8_t RecOut_REAR();                 // Rear
   int8_t RecOut_OFF();                  // Off
+  int8_t RecOut_FLAT();                 // Flat
 
   private :
     byte _DATA[10];
