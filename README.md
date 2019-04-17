@@ -1,58 +1,58 @@
 # TDA743X => Library TDA7430 or TDA7431 or TDA7432
 
 Example Param: </br>
-#include "TDA743X.h"
-TDA7430 uPA;
+#include "TDA743X.h" </br>
+TDA7430 uPA;  </br>
 
-void setup(){
-  Wire.begin();
-  Serial.begin(9600);
-  int value = uPA.begin();
-  if(value != Process_OK){
-    return;
-  }
-}
-
-void loop(){
-
-}
-
-
+void setup(){ </br>
+  Wire.begin(); </br>
+  Serial.begin(9600); </br>
+  int value = uPA.begin(); </br>
+  if(value != Process_OK){ </br>
+    return; </br>
+  } </br>
+} </br>
+</br>
+void loop(){ </br>
+</br>
+} </br>
+</br>
+</br>
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-TDA7430 & TDA7431
-  int8_t begin();             
-  int8_t begin(byte Address); //Address  
-  int8_t begin(byte Address,  //Address
-               byte Addr);    //pin Addr
-  // Address => 0x80 (FIX => TDA7430)
-  // Addr => pinAddr (Only TDA7431)
-
-  int8_t UseValue(int8_t val); // Default => Use_POSITIVE
-  // Use_POSITIVE or Use_NEGATIVE
-  
-  int8_t Input(int8_t val);   //Input
-  // TDA7430 maks Input => 4
-  // TDA7431 maks Input => 1 (FIX)
-  
-  int8_t Volume(int8_t val);  //Volume
-  // UserValue == Use_POSITIVE => Volume 0 ~ 63
-  // UserValue == Use_NEGATIVE => Volume -63 ~ 0
-  
-  int8_t Bass(int8_t val);    //Bass 
+TDA7430 & TDA7431 </br>
+  int8_t begin(); </br>            
+  int8_t begin(byte Address); //Address </br>
+  int8_t begin(byte Address,  //Address </br>
+               byte Addr);    //pin Addr </br>
+  // Address => 0x80 (FIX => TDA7430) </br>
+  // Addr => pinAddr (Only TDA7431) </br>
+  </br>
+  int8_t UseValue(int8_t val); // Default => Use_POSITIVE </br>
+  // Use_POSITIVE or Use_NEGATIVE </br>
+  </br>
+  int8_t Input(int8_t val);   //Input </br>
+  // TDA7430 maks Input => 4 </br>
+  // TDA7431 maks Input => 1 (FIX) </br>
+  </br>
+  int8_t Volume(int8_t val);  //Volume </br>
+  // UserValue == Use_POSITIVE => Volume 0 ~ 63 </br>
+  // UserValue == Use_NEGATIVE => Volume -63 ~ 0 </br>
+  </br>
+  int8_t Bass(int8_t val);    //Bass </br>
+  // value => -7 ~ 7 </br>
+  </br>
+  int8_t Middle(int8_t val);  //Middle </br>
   // value => -7 ~ 7
-  
-  int8_t Middle(int8_t val);  //Middle
-  // value => -7 ~ 7
-  
-  int8_t Treble(int8_t val);  //Treble
-  // value => -7 ~ 7
-  
-  int8_t Balance(int8_t val);               //Value
-  int8_t Balance(int8_t val,int8_t val2);   //Value,channel
-  // UserValue == Use_POSITIVE => value 0 ~ 79
-  // UserValue == Use_NEGATIVE => Volume -79 ~ 0
-  // Channel => ATT_LR,ATT_RR,ATT_LF, or ATT_RF
-
+  </br>
+  int8_t Treble(int8_t val);  //Treble </br>
+  // value => -7 ~ 7 </br>
+  </br>
+  int8_t Balance(int8_t val);               //Value </br>
+  int8_t Balance(int8_t val,int8_t val2);   //Value,channel </br>
+  // UserValue == Use_POSITIVE => value 0 ~ 79 </br>
+  // UserValue == Use_NEGATIVE => Volume -79 ~ 0 </br>
+  // Channel => ATT_LR,ATT_RR,ATT_LF, or ATT_RF </br> 
+ 
   int8_t NaturalBase(int8_t val); //NaturalBase
   // Value => NATURALBASE_ACTIVE or NATURALBASE_OFF
   
