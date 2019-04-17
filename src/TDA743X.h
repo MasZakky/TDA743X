@@ -52,7 +52,7 @@
     #define NATURALBASE_ACTIVE 0
     #define NATURALBASE_OFF    1
 
-  #if defined(OICECANCELLER_OFF) || defined(VOICECANCELLER_ON)
+  #if defined(VOICECANCELLER_OFF) || defined(VOICECANCELLER_ON)
    #undef VOICECANCELLER_OFF
    #undef VOICECANCELLER_ON
   #endif
