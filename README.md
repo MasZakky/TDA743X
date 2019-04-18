@@ -1,10 +1,11 @@
 # TDA743X => 
 <h3>Library</h3>
 <ul>
-  <li><a style="color:red" href="https://www.mouser.com/datasheet/2/389/CD00000226-470817.pdf">TDA7430</a></li>
-  <li><a style="color:red" href="https://www.mouser.com/datasheet/2/389/CD00000226-470817.pdf">TDA7431</a></li>
-  <li><a style="color:red" href="https://www.st.com/resource/en/datasheet/CD00000874.pdf">TDA7432</a></li>
+  <li><a text-decoration="none" style="color:red" href="https://www.mouser.com/datasheet/2/389/CD00000226-470817.pdf">TDA7430</a></li>
+  <li><a text-decoration="none" style="color:red" href="https://www.mouser.com/datasheet/2/389/CD00000226-470817.pdf">TDA7431</a></li>
+  <li><a text-decoration="none" style="color:red" href="https://www.st.com/resource/en/datasheet/CD00000874.pdf">TDA7432</a></li>
 <ul>
+
 
     Example Param:
     #include "TDA743X.h"
@@ -28,7 +29,7 @@
     // Do something?
     } 
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 <h3>TDA7430 & TDA7431 </h3>
 
@@ -119,7 +120,7 @@
        Value   => MUTE_OFF or MUTE_ON
        Channel => ATT_LR,ATT_RR,ATT_LF, or ATT_RF 
      
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 <h3>TDA7432</h3>
 
