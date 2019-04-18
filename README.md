@@ -171,3 +171,19 @@
     int8_t EnableModeLoudness(); 
     int8_t DisableModeLoudness();
 
+
+<h4>Notice</h4>
+<pre><h5> 
+    if  defined(__AVR_AT90Mega169__)  or defined(__AVR_ATmega169__)   or
+        defined(__AVR_AT90Mega165__)  or defined(__AVR_ATmega165__)   or
+        defined(__AVR_ATmega325__)    or defined(__AVR_ATmega3250__)  or
+        defined(__AVR_ATmega645__)    or defined(__AVR_ATmega6450__)  or
+        defined(__AVR_ATmega329__)    or defined(__AVR_ATmega3290__)  or
+        defined(__AVR_ATmega649__)    or defined(__AVR_ATmega6490__)  or
+        defined(__AVR_ATtiny25__)     or defined(__AVR_ATtiny45__)    or defined(__AVR_ATtiny85__) or
+        defined(__AVR_AT90Tiny26__)   or defined(__AVR_ATtiny26__)    or
+        defined(__AVR_ATtiny84__)     or defined(__AVR_ATtiny44__)    or
+        defined(__AVR_AT90Tiny2313__) or defined(__AVR_ATtiny2313__)
+            Automatic disable "InstalWire" and "Wire" will be replaced with "TinyWireM" 
+        
+</h5></pre>
