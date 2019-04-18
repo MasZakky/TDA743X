@@ -1,9 +1,9 @@
 # TDA743X => 
 <h3>Library</h3>
 <ul>
-  <li><a style="text-decoration:none; color:red" href="https://www.mouser.com/datasheet/2/389/CD00000226-470817.pdf" >TDA7430</a></li>
-  <li><a style="text-decoration:none; color:red" href="https://www.mouser.com/datasheet/2/389/CD00000226-470817.pdf" >TDA7431</a></li>
-  <li><a style="text-decoration:none; color:red" href="https://www.st.com/resource/en/datasheet/CD00000874.pdf" >TDA7432</a></li>
+  <li><a style="text-decoration:none" href="https://www.mouser.com/datasheet/2/389/CD00000226-470817.pdf" >TDA7430</a></li>
+  <li><a style="text-decoration:none" href="https://www.mouser.com/datasheet/2/389/CD00000226-470817.pdf" >TDA7431</a></li>
+  <li><a style="text-decoration:none" href="https://www.st.com/resource/en/datasheet/CD00000874.pdf" >TDA7432</a></li>
 <ul>
 
 
@@ -11,12 +11,16 @@
 
     #include "TDA743X.h"
     TDA7430 uPA;  
-
+    
+    int value;
+    
     void setup(){ 
       Wire.begin();
       Serial.begin(9600); 
       
-      int value = uPA.begin(); 
+      value = uPA.InstalWire(Wire);
+      value |= uPA.begin(); 
+      
       if(value == Process_OK){ 
         Serial.println("Process_OK");
         return; 
