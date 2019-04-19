@@ -15,9 +15,9 @@ void setup() {
 //  uPA.UseValue(Use_NEGATIVE);   UseNEGATIVE
 
   uPA.Input(1);       // Channel  no 1 Input  
-//  uPA.Input(2);       // Channel  no 1 Input  
-//  uPA.Input(3);       // Channel  no 1 Input  
-//  uPA.Input(4);       // Channel  no 1 Input  
+//  uPA.Input(2);       // Channel  no 2 Input  
+//  uPA.Input(3);       // Channel  no 3 Input  
+//  uPA.Input(4);       // Channel  no 4 Input  
 
   uPA.Volume(0);      // 0  dB 
   // UseValue == Use_POSITIVE => 0 ~ 63  => 0 dB ~ -63dB
@@ -67,7 +67,13 @@ void setup() {
   uPA.(MUTE_OFF);           //MUTE_OFF
 //  uPA.(MUTE_ON);            // MUTE_ON
 //  uPA.(MUTE_OFF,ATT_LR);    // MUTE_OFF ,ATT_LR  
+//  uPA.(MUTE_ON, ATT_RR);    // MUTE_ON  ,ATT_LR
+//  uPA.(MUTE_OFF,ATT_LR);    // MUTE_OFF ,ATT_RR  
 //  uPA.(MUTE_ON, ATT_RR);    // MUTE_ON  ,ATT_RR
+//  uPA.(MUTE_OFF,ATT_LR);    // MUTE_OFF ,ATT_LF  
+//  uPA.(MUTE_ON, ATT_RR);    // MUTE_ON  ,ATT_LF
+//  uPA.(MUTE_OFF,ATT_LR);    // MUTE_OFF ,ATT_RF  
+//  uPA.(MUTE_ON, ATT_RR);    // MUTE_ON  ,ATT_RF
 //  uPA.DisableMute();        // Disable
 //  uPA.EnableMute();         // Enable
 
