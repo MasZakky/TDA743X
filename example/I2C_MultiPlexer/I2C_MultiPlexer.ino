@@ -19,7 +19,7 @@ void setup() {
   
   uPA.setChannel(0);
   //             Value
-  // Value => 0 ~ 7
+  // Value => 0 ~ 7 
 
 }
 
