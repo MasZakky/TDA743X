@@ -1,6 +1,6 @@
 #include "TDA743X.h"
 
-TDA7430 uPA;
+TDA7431 uPA;
 
 void setup() {
   Wire.begin();
