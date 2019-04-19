@@ -12,14 +12,14 @@ void setup() {
 //  uPA.InstalWire(&Wire2);   // Instal Wire2
 
   uPA.UseValue(Use_POSITIVE);   //UsePOSITIVE
-//  uPA.UseValue(Use_NEGATIVE);   UseNEGATIVE
+//  uPA.UseValue(Use_NEGATIVE);   //UseNEGATIVE
 
   uPA.Input(1);       // Channel  no 1 Input  
 //  uPA.Input(2);       // Channel  no 2 Input  
 //  uPA.Input(3);       // Channel  no 3 Input  
 //  uPA.Input(4);       // Channel  no 4 Input  
 
-  uPA.Volume(0);      // 0  dB 
+  uPA.Volume(0);      // 0  dB (1dB Step)
   // UseValue == Use_POSITIVE => 0 ~ 63  => 0 dB ~ -63dB
   // UseValue == Use_NEGATIVE => -63 ~0  => 0 dB ~ -63dB
   
@@ -32,7 +32,7 @@ void setup() {
   uPA.Treble(7);      // 14 dB
   // Value -7 ~ 7  => -14dB ~ 14dB (2dB Step);
 
-  uPA.Balance(0);         // 0 dB ALL OUTPUT
+  uPA.Balance(0);         // 0 dB ALL OUTPUT (1dB Step)
 //  uPA.Balance(0,ATT_LR);  // 0 dB Output ATT_LR
 //  uPA.Balance(0,ATT_RR);  // 0 dB Output ATT_RR
 //  uPA.Balance(0,ATT_LF);  // 0 dB Output ATT_LF
