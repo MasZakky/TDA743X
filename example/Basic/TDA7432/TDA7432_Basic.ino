@@ -4,6 +4,7 @@ TDA7432 uPA;
 
 void setup() {
   Wire.begin();
+  uPA.setAddress(0x80);
   
   uPA.InstalWire(&Wire);      // Instal Wire
 //  uPA.InstalWire(&Wire1);   // Instal Wire1
