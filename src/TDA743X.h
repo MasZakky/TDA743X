@@ -98,30 +98,29 @@ class TDA7430 :public SendTransI2C{
   
   int8_t begin();             //
   int8_t begin(byte Address = AddrTDA7430); //Address  
-  int8_t begin(byte Address,  //Address
-               byte Addr);    //Channel
+  int8_t begin(byte Address, byte Addr);    //Address,Channel
 
   int8_t UseValue(int8_t val = Use_POSITIVE);
   
-  int8_t Input(int8_t val);   //Input
+  int8_t Input(int8_t val = 1);   //Input
   
-  int8_t Volume(int8_t val);  //Volume
-  int8_t Bass(int8_t val);    //Bass
-  int8_t Middle(int8_t val);  //Middle
-  int8_t Treble(int8_t val);  //Treble
+  int8_t Volume(int8_t val = 1);  //Volume
+  int8_t Bass(int8_t val = 7);    //Bass
+  int8_t Middle(int8_t val = 7);  //Middle
+  int8_t Treble(int8_t val = 7);  //Treble
 
-  int8_t Balance(int8_t val);               //Value
+  int8_t Balance(int8_t val = 0);           //Value
   int8_t Balance(int8_t val,int8_t val2);   //Value,channel
 
-  int8_t NaturalBase(int8_t val); //NaturalBase
+  int8_t NaturalBase(int8_t val= NATURALBASE_ACTIVE); //NaturalBase
   int8_t EnableNaturalBase();     //Enable
   int8_t DisableNaturalBase();    //Disable
 
-  int8_t RearSwitch(int8_t val);  //Rear
+  int8_t RearSwitch(int8_t val = REAR_ACTIVE);  //Rear
   int8_t EnableRear();            //Enable
   int8_t DisableRear();           //Disable
 
-  int8_t SurroundMode(int8_t val);  //Surround Mode
+  int8_t SurroundMode(int8_t val = Surr_OFF);  //Surround Mode
   int8_t Surround_SIMULATED();      //SIMULATED
   int8_t Surround_MUSIC();          //MUSIC
   int8_t Surround_MOVIE();          //MOVIE
@@ -129,7 +128,7 @@ class TDA7430 :public SendTransI2C{
 
   int8_t EffectControl(int8_t val); //EffectControl
   
-  int8_t PhaseResistor(int8_t val);     // 0 -  255
+  int8_t PhaseResistor(int8_t val = 255);     // 0 -  255
   int8_t PhaseResistor(int8_t val,      // 0 - 3
                        int8_t val1,     // 0 - 3
                        int8_t val2,     // 0 - 3
@@ -139,30 +138,28 @@ class TDA7430 :public SendTransI2C{
 //   int8_t PhaseResistor3(int8_t val);    // 0 - 3
 //   int8_t PhaseResistor4(int8_t val);    // 0 - 3
 
-  int8_t VoiceCanceller(int8_t val);    //VoiceCanceler
+  int8_t VoiceCanceller(int8_t val = VOICECANCELLER_OFF);    //VoiceCanceler
   int8_t DisableVoiceCanceller();       //Disable
   int8_t EnableVoiceCanceller();        //Enable
 
-  int8_t SelectorRecOut(int8_t val);    // value
-  int8_t SelectorRecOut(int8_t val,     // Value
-                        int8_t val2);   // Channel
+  int8_t SelectorRecOut(int8_t val = Out_3BAND);    // Value
+  int8_t SelectorRecOut(int8_t val,int8_t val2);    // Value,Channel
   int8_t RecOut_3BAND();                // 3Band
   int8_t RecOut_SURR();                 // Surr
   int8_t RecOut_REAR();                 // Rear
   int8_t RecOut_OFF();                  // Off
   int8_t RecOut_FLAT();                 // Flat
 
-  int8_t Mute(int8_t val);
-  int8_t Mute(int8_t val,int8_t val2);
-  int8_t DisableMute();
-  int8_t EnableMute();
+  int8_t Mute(int8_t val = MUTE_OFF);   // Value
+  int8_t Mute(int8_t val,int8_t val2);  // Value,Channel
+  int8_t DisableMute();                 // Disable
+  int8_t EnableMute();                  // Enable
 
   protected:
     byte _DATA[10];
     int16_t Constrain(int16_t val,int16_t val2,int16_t val3);
     int8_t MaxInput(int8_t val = 4);
-    int8_t _MInput;
-    int8_t _UPN;
+    int8_t _MInput,_UPN;
 };
 
 class TDA7431 :public TDA7430{
@@ -173,30 +170,37 @@ class TDA7431 :public TDA7430{
 
 class TDA7432 :public SendTransI2C{
   public:
-    int8_t Volume(int8_t val);
-    int8_t Bass(int8_t val);
-    int8_t Treble(int8_t val);
+    int8_t Volume(int8_t val = 0);
+    int8_t Bass(int8_t val = 7);
+    int8_t Treble(int8_t val = 7);
 
     int8_t UseValue(int8_t val = Use_POSITIVE);
         
-    int8_t Balance(int8_t val);
+    int8_t Balance(int8_t val = 0);
     int8_t Balance(int8_t val,int8_t val2);
 
-    int8_t Input(int8_t val);
+    int8_t Input(int8_t val = 1);
 
-    int8_t Mute(int8_t val);
+    int8_t Mute(int8_t val = 0);
     int8_t Mute(int8_t val,int8_t val2);
     int8_t DisableMute();
     int8_t EnableMute();
 
-    int8_t Loudness(int8_t val);
-    int8_t ModeLoudness(int8_t val);
+    int8_t Loudness(int8_t val = Loudness_ON);
+    int8_t ModeLoudness(int8_t val = 0);
     int8_t EnableModeLoudness();
     int8_t DisableModeLoudness();
     
   protected:
     byte _DATA[8];
     int16_t Constrain(int16_t val,int16_t val2,int16_t val3);
-    int8_t _UPN,_EBass;
+    int8_t MaxInput(int8_t val = 2);
+    int8_t _UPN,_EBass,_MInput;
 };
+
+class TDA7433 :public TDA7432{
+  public:
+  protected:
+    int8_t MaxInput(int8_t val = 3);
+}
 #endif
