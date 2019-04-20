@@ -215,6 +215,6 @@
         defined(__AVR_ATtiny84__)     or defined(__AVR_ATtiny44__)    or
         defined(__AVR_AT90Tiny2313__) or defined(__AVR_ATtiny2313__)
             Automatic disable "InstalWire" and "Wire" will be replaced with "TinyWireM" 
-            Download<a href="https://github.com/adafruit/TinyWireM">TinyWireM library</a>
+            Download<a href="https://github.com/adafruit/TinyWireM"> TinyWireM library </a>
         
 </h5></pre>
