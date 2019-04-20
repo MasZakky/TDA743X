@@ -3,6 +3,12 @@
 TDA7430 uPA;
 //TDA7431 uPA;
 //TDA7432 uPA;
+//TDA7433 uPA;
+//TDA7434 uPA;
+//TDA7435 uPA;
+//TDA7437 uPA;
+//TDA7438 uPA;
+//TDA7439 uPA;
 
 void setup() {
   Wire.begin();
