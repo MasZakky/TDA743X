@@ -1,9 +1,15 @@
-# TDA743X => 
+# TDA743X 
 <h3>Library</h3>
 <ul>
-  <li><a style="text-decoration:none" href="https://www.mouser.com/datasheet/2/389/CD00000226-470817.pdf" >TDA7430</a></li>
-  <li><a style="text-decoration:none" href="https://www.mouser.com/datasheet/2/389/CD00000226-470817.pdf" >TDA7431</a></li>
-  <li><a style="text-decoration:none" href="https://www.st.com/resource/en/datasheet/CD00000874.pdf" >TDA7432</a></li>
+  <li><a href="https://www.mouser.com/datasheet/2/389/CD00000226-470817.pdf"         >TDA7430</a></li>
+  <li><a href="https://www.mouser.com/datasheet/2/389/CD00000226-470817.pdf"         >TDA7431</a></li>
+  <li><a href="https://www.st.com/resource/en/datasheet/CD00000874.pdf"              >TDA7432</a></li>
+  <li><a href="https://www.st.com/resource/en/datasheet/cd00000878.pdf"              >TDA7433</a></li>
+  <li><a href="http://pdf.datasheetcatalog.com/datasheet/stmicroelectronics/4062.pdf">TDA7434</a></li>
+  <li><a href="http://pdf.datasheetcatalog.com/datasheets/105/324990_DS.pdf"         >TDA7435</a></li>
+  <li><a href="http://pdf.datasheetcatalog.com/datasheet/SGSThomsonMicroelectronics/mXruwsz.pdf">TDA7437</a></li>
+  <li><a href="https://www.st.com/resource/en/datasheet/CD00001003.pdf"              >TDA7438</a></li>
+  <li><a href="https://www.st.com/resource/en/datasheet/cd00004906.pdf"              >TDA7439</a></li>
 <ul>
 
 
@@ -11,23 +17,25 @@
 
     #include "TDA743X.h"
     TDA7430 uPA;  
-    
-    int value;
+    //TDA7431 uPA;
+    //TDA7432 uPA;
+    //TDA7433 uPA;
+    //TDA7434 uPA;
+    //TDA7435 uPA;
+    //TDA7437 uPA;
+    //TDA7438 uPA;
+    //TDA7439 uPA;
     
     void setup(){ 
       Wire.begin();
       Serial.begin(9600); 
       
-      value = uPA.InstalWire(Wire);
-      value |= uPA.begin(); 
+      if(uPA.InstalWire(&Wire) != Process_OK) Serial.println("Process_ERROR");
+      else Serial.println("Process_OK");
       
-      if(value == Process_OK){ 
-        Serial.println("Process_OK");
-        return; 
-      } // if 
-      else{ 
-        Serial.println("Process_ERROR"); 
-      } // else
+      if(uPA.begin() =! Process_OK) Serial.print("Process_ERROR");
+      else Serial.println("Process_OK");
+      
     } // void setup
     
     void loop(){
@@ -38,138 +46,160 @@
 
 <h3>TDA7430 & TDA7431 </h3>
 
-    int8_t begin();            
-    int8_t begin(byte Address); 
-    int8_t begin(byte Address,byte Addr);
-       Address => 0x80 (FIX => TDA7430) 
-       Addr    => pinAddr (Only TDA7431) 
+    1.  int8_t begin();            
+    2.  int8_t begin(byte Address); 
+    3.  int8_t begin(byte Address,byte Addr);
+                    Address     ,pinAddr
+          Address => 0x80 (FIX => TDA7430 & TDA7431) 
+          Addr    => pinAddr (Only TDA7431) 
 
-    int8_t UseValue(int8_t val); 
-       Default      => Use_POSITIVE 
-       Use_POSITIVE or Use_NEGATIVE 
+    4.  int8_t UseValue(int8_t val); 
+          Default => Use_POSITIVE 
+          Value   => Use_POSITIVE or Use_NEGATIVE 
 
-    int8_t Input(int8_t val); 
-       TDA7430 maks Input => 4 
-       TDA7431 maks Input => 1 (FIX)
+    5.  int8_t Input(int8_t val); 
+          Default  => 1
+          TDA7430 maks Input => 4 
+          TDA7431 maks Input => 1 (FIX)
     
-    int8_t Volume(int8_t val);
-       UserValue == Use_POSITIVE => Volume 0 ~ 63 
-       UserValue == Use_NEGATIVE => Volume -63 ~ 0
+    6.  int8_t Volume(int8_t val);
+          Default => 0 (0dB)
+          UserValue == Use_POSITIVE => Volume 0 ~ 63  => 0dB ~ -31.5dB (0.5dB Step)
+          UserValue == Use_NEGATIVE => Volume -63 ~ 0 => -31.5dB ~ 0dB (0.5dB Step)
     
-    int8_t Bass(int8_t val);
-       Value => -7 ~ 7 
+    7.  int8_t Bass(int8_t val);
+          Default => 7 (14dB)
+          Value   => -7 ~ 7 => -14dB ~ 14dB (2dB Step)
     
-    int8_t Middle(int8_t val);
-       Value => -7 ~ 7
+    8.  int8_t Middle(int8_t val);
+          Default => 7 (14dB)
+          Value => -7 ~ 7 => -14dB ~ 14dB (2dB Step)
     
-    int8_t Treble(int8_t val);
-       Value => -7 ~ 7 
+    9.  int8_t Treble(int8_t val);
+          Default => 7 (14dB)
+          Value => -7 ~ 7 => -14dB ~ 14dB (2dB Step)
   
-    int8_t Balance(int8_t val);
-    int8_t Balance(int8_t val,int8_t val2);   
-                   Value     ,Channel 
-       UserValue == Use_POSITIVE => Balance 0 ~ 79 
-       UserValue == Use_NEGATIVE => Balance -79 ~ 0 
-       Channel => ATT_LR,ATT_RR,ATT_LF, or ATT_RF 
+    10. int8_t Balance(int8_t val);
+    11. int8_t Balance(int8_t val,int8_t val2);   
+                       Value     ,Channel 
+          Default => 0dB  
+          UserValue == Use_POSITIVE => Balance 0 ~ 79  => 0dB ~ -79dB (1dB Step)
+          UserValue == Use_NEGATIVE => Balance -79 ~ 0 => -79dB ~ 0dB (1dB Step)
+          Channel => ATT_LR,ATT_RR,ATT_LF, or ATT_RF 
   
-    int8_t NaturalBase(int8_t val);
-       Value => NATURALBASE_ACTIVE or NATURALBASE_OFF 
+    12. int8_t NaturalBase(int8_t val);
+          Default => NATURALBASE_ACTIVE 
+          Value   => NATURALBASE_ACTIVE or NATURALBASE_OFF 
     
-    int8_t EnableNaturalBase(); 
-    int8_t DisableNaturalBase();
+    13. int8_t EnableNaturalBase(); 
+    14. int8_t DisableNaturalBase();
  
-    int8_t RearSwitch(int8_t val);
-       Value => REAR_ACTIVE or REAR_OFF 
+    15. int8_t RearSwitch(int8_t val);
+          Default => REAR_ACTIVE
+          Value   => REAR_ACTIVE or REAR_OFF 
    
-    int8_t EnableRear();            
-    int8_t DisableRear();           
+    16. int8_t EnableRear();            
+    17. int8_t DisableRear();           
    
-    int8_t SurroundMode(int8_t val);  
-    int8_t Surround_SIMULATED();    
-    int8_t Surround_MUSIC();         
-    int8_t Surround_MOVIE();        
-    int8_t Surround_OFF();          
-       Value => Surr_SIMULATED,Surr_MUSIC,Surr_MOVIE, or Surround_OFF 
+    18. int8_t SurroundMode(int8_t val);  
+    19. int8_t Surround_SIMULATED();    
+    20. int8_t Surround_MUSIC();         
+    21. int8_t Surround_MOVIE();        
+    22. int8_t Surround_OFF();          
+          Default => Surr_OFF
+          Value   => Surr_SIMULATED,Surr_MUSIC,Surr_MOVIE, or Surround_OFF 
     
-    int8_t EffectControl(int8_t val);
-       Value => -6 ~ -21 
+    23. int8_t EffectControl(int8_t val);
+          Default => -6
+          Value   => -6 ~ -21 (1 Step)
     
-    int8_t PhaseResistor(int8_t val);     // 0 -  255 
-    int8_t PhaseResistor(int8_t val,      // 0 - 3 
-                         int8_t val1,     // 0 - 3 
-                         int8_t val2,     // 0 - 3 
-                         int8_t val3);    // 0 - 3 
+    24. int8_t PhaseResistor(int8_t val);     // 0 - 255 
+    25. int8_t PhaseResistor(int8_t val,      // 0 - 3 
+                             int8_t val1,     // 0 - 3 
+                             int8_t val2,     // 0 - 3 
+                             int8_t val3);    // 0 - 3 
+          Default => 255
    
-    int8_t VoiceCanceller(int8_t val);    
-       Value => VOICECANCELLER_OFF or VOICECANCELLER_ON 
+    26. int8_t VoiceCanceller(int8_t val); 
+          Default => VOICECANCELLER_OFF
+          Value   => VOICECANCELLER_OFF or VOICECANCELLER_ON 
     
-    int8_t DisableVoiceCanceller();
-    int8_t EnableVoiceCanceller();
+    27. int8_t DisableVoiceCanceller();
+    28. int8_t EnableVoiceCanceller();
    
-    int8_t SelectorRecOut(int8_t val);
-    int8_t SelectorRecOut(int8_t val,int8_t val2);
+    29. int8_t SelectorRecOut(int8_t val);
+    30. int8_t SelectorRecOut(int8_t val,int8_t val2);
                           Value     ,Channel
-    int8_t RecOut_3BAND();
-    int8_t RecOut_SURR(); 
-    int8_t RecOut_REAR(); 
-    int8_t RecOut_OFF();  
-    int8_t RecOut_FLAT(); 
-       Value   => Out_3BAND,Out_SURR,Out_REAR,Out_OFF, or Out_FLAT 
-       Channel => ATT_LR,ATT_RR,ATT_LF, or ATT_RF
-     
-    int8_t Mute(int8_t val);              
-    int8_t Mute(int8_t val,int8_t val2);  
-                Value     ,Channel
-    int8_t DisableMute();                 
-    int8_t EnableMute();                  
-       Value   => MUTE_OFF or MUTE_ON
-       Channel => ATT_LR,ATT_RR,ATT_LF, or ATT_RF 
+    31. int8_t RecOut_3BAND();
+    32. int8_t RecOut_SURR(); 
+    33. int8_t RecOut_REAR(); 
+    34. int8_t RecOut_OFF();  
+    35. int8_t RecOut_FLAT(); 
+          Default => Out_3BAND
+          Value   => Out_3BAND,Out_SURR,Out_REAR,Out_OFF, or Out_FLAT 
+          Channel => ATT_LR or ATT_RR     
+       
+    36. int8_t Mute(int8_t val);              
+    37. int8_t Mute(int8_t val,int8_t val2);  
+                    Value     ,Channel
+    39. int8_t DisableMute();                 
+    40. int8_t EnableMute();                  
+          Value   => MUTE_OFF or MUTE_ON
+          Channel => ATT_LR,ATT_RR,ATT_LF, or ATT_RF
      
 
 <h3>TDA7432</h3>
 
-    int8_t Volume(int8_t val);  
-       UserValue == Use_POSITIVE => Volume 0 ~ 63 
-       UserValue == Use_NEGATIVE => Volume -63 ~ 0
+    1.  int8_t Volume(int8_t val); 
+          Default => 0 (0dB)
+          UserValue == Use_POSITIVE => Volume 0 ~ 63  => 0dB ~ -31.5dB 
+          UserValue == Use_NEGATIVE => Volume -63 ~ 0 => -31.5dB ~ 0dB 
     
-    int8_t Bass(int8_t val);
-       Value => -7 ~ 7 
-    
-    int8_t Treble(int8_t val);
-       Value => -7 ~ 7 
-    
-    int8_t UseValue(int8_t val);
-       Default => Use_POSITIVE 
-       Value   => Use_POSITIVE or Use_NEGATIVE 
-    
-    int8_t Balance(int8_t val);               
-    int8_t Balance(int8_t val,int8_t val2);   
-                   Value     ,Channel
-       UserValue == Use_POSITIVE => Balance 0 ~ 79 
-       UserValue == Use_NEGATIVE => Balance -79 ~ 0
-       Channel => ATT_LR,ATT_RR,ATT_LF, or ATT_RF
+    2.  int8_t Bass(int8_t val);
+          Default => 7 (14dB)
+          Value => -7 ~ 7 => -14dB ~ 14dB (2dB Step)
+          
+    3.  int8_t Treble(int8_t val);
+          Default => 7 (14dB)
+          Value => -7 ~ 7 => -14dB ~ 14dB (2dB Step)    
 
-    int8_t Input(int8_t val);
-       TDA7430 maks Input => 2 
-     
-    int8_t Mute(int8_t val);              
-    int8_t Mute(int8_t val,int8_t val2);  
-                Value     ,Channel
-                
-    int8_t DisableMute();                 
-    int8_t EnableMute();
-       Value => MUTE_OFF or MUTE_ON 
-       Channel => ATT_LR,ATT_RR,ATT_LF, or ATT_RF 
-
-    int8_t Loudness(int8_t val);          
-       UserValue == Use_POSITIVE => Loudness 0 ~ 15 
-       UserValue == Use_NEGATIVE => Loudness -15 ~ 0
-     
-    int8_t ModeLoudness(int8_t val);      
-       Value => Loudness_ON or Loudness_OFF
+    4.  int8_t UseValue(int8_t val);
+          Default => Use_POSITIVE 
+          Value   => Use_POSITIVE or Use_NEGATIVE 
     
-    int8_t EnableModeLoudness(); 
-    int8_t DisableModeLoudness();
+    5.  int8_t Balance(int8_t val);               
+    6.  int8_t Balance(int8_t val,int8_t val2);   
+                       Value     ,Channel
+          Default => 0 (0dB)
+          UserValue == Use_POSITIVE => Balance 0 ~ 79  => 0dB ~ -79dB (1dB Step)
+          UserValue == Use_NEGATIVE => Balance -79 ~ 0 => -79dB ~ 0dB (1dB Step)
+          Channel => ATT_LR,ATT_RR,ATT_LF, or ATT_RF
+
+    7.  int8_t Input(int8_t val);
+          Default => 1
+          TDA7432 maks Input => 2 
+          TDa7433 maks Input => 3
+          
+    8.  int8_t Mute(int8_t val);              
+    9.  int8_t Mute(int8_t val,int8_t val2);  
+                    Value     ,Channel    
+    10. int8_t DisableMute();                 
+    11. int8_t EnableMute();
+          Default => MUTE_OFF
+          Value   => MUTE_OFF or MUTE_ON 
+          Channel => ATT_LR,ATT_RR,ATT_LF, or ATT_RF 
+
+    12. int8_t Loudness(int8_t val);          
+          Default => 0 (0dB)
+          UserValue == Use_POSITIVE => Loudness 0 ~ 15  => 0dB ~ -15dB (1dB)
+          UserValue == Use_NEGATIVE => Loudness -15 ~ 0 => -15dB ~ 0dB (1dB)
+     
+    13. int8_t ModeLoudness(int8_t val);      
+          Default => Loudness_ON
+          Value   => Loudness_ON or Loudness_OFF
+    
+    14. int8_t EnableModeLoudness(); 
+    15. int8_t DisableModeLoudness();
 
 
 <h4>Notice</h4>
