@@ -32,16 +32,16 @@ void setup() {
 //  uPA.Balance(0,ATT_LF);  // 0 dB Output ATT_LF
 //  uPA.Balance(0,ATT_RF);  // 0 dB Output ATT_RF
 
-  uPA.(MUTE_OFF);           //MUTE_OFF
-//  uPA.(MUTE_ON);            // MUTE_ON
-//  uPA.(MUTE_OFF,ATT_LR);    // MUTE_OFF ,ATT_LR  
-//  uPA.(MUTE_ON, ATT_RR);    // MUTE_ON  ,ATT_LR
-//  uPA.(MUTE_OFF,ATT_LR);    // MUTE_OFF ,ATT_RR  
-//  uPA.(MUTE_ON, ATT_RR);    // MUTE_ON  ,ATT_RR
-//  uPA.(MUTE_OFF,ATT_LR);    // MUTE_OFF ,ATT_LF  
-//  uPA.(MUTE_ON, ATT_RR);    // MUTE_ON  ,ATT_LF
-//  uPA.(MUTE_OFF,ATT_LR);    // MUTE_OFF ,ATT_RF  
-//  uPA.(MUTE_ON, ATT_RR);    // MUTE_ON  ,ATT_RF
+  uPA.Mute(MUTE_OFF);           //MUTE_OFF
+//  uPA.Mute(MUTE_ON);            // MUTE_ON
+//  uPA.Mute(MUTE_OFF,ATT_LR);    // MUTE_OFF ,ATT_LR  
+//  uPA.Mute(MUTE_ON, ATT_RR);    // MUTE_ON  ,ATT_LR
+//  uPA.Mute(MUTE_OFF,ATT_LR);    // MUTE_OFF ,ATT_RR  
+//  uPA.Mute(MUTE_ON, ATT_RR);    // MUTE_ON  ,ATT_RR
+//  uPA.Mute(MUTE_OFF,ATT_LR);    // MUTE_OFF ,ATT_LF  
+//  uPA.Mute(MUTE_ON, ATT_RR);    // MUTE_ON  ,ATT_LF
+//  uPA.Mute(MUTE_OFF,ATT_LR);    // MUTE_OFF ,ATT_RF  
+//  uPA.Mute(MUTE_ON, ATT_RR);    // MUTE_ON  ,ATT_RF
 //  uPA.DisableMute();        // Disable
 //  uPA.EnableMute();         // Enable
 
