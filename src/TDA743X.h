@@ -181,7 +181,7 @@ class TDA7432 :public SendTransI2C{
 
     int8_t Input(int8_t val = 1);
 
-    int8_t Mute(int8_t val = 0);
+    int8_t Mute(int8_t val = MUTE_OFF);
     int8_t Mute(int8_t val,int8_t val2);
     int8_t DisableMute();
     int8_t EnableMute();
@@ -194,13 +194,7 @@ class TDA7432 :public SendTransI2C{
   protected:
     byte _DATA[8];
     int16_t Constrain(int16_t val,int16_t val2,int16_t val3);
-    int8_t MaxInput(int8_t val = 2);
-    int8_t _UPN,_EBass,_MInput;
+    int8_t _UPN,_EBass;
 };
 
-class TDA7433 :public TDA7432{
-  public:
-  protected:
-    int8_t MaxInput(int8_t val = 3);
-}
 #endif
