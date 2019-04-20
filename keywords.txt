@@ -6,9 +6,9 @@
 # Datatypes (KEYWORD1)
 #######################################
 
-TDA743X KEYWORD1 
-TDA7430 KEYWORD1 
-TDA7431 KEYWORD1 
+TDA743X KEYWORD2
+TDA7430 KEYWORD2
+TDA7431 KEYWORD2
 TDA7432 KEYWORD2 
 
 #######################################
