@@ -16,7 +16,7 @@ void setup() {
 
 //  uPA.Input(1);       // FIX
 
-  uPA.Volume(0);      // 0  dB (1dB Step)
+uPA.Volume(0);      // 0  dB (1dB Step)
   // UseValue == Use_POSITIVE => 0 ~ 63  => 0 dB ~ -63dB
   // UseValue == Use_NEGATIVE => -63 ~0  => 0 dB ~ -63dB
   
@@ -61,6 +61,30 @@ void setup() {
 //  uPA.RecOut_OFF();                       // OFF
 //  uPA.RecOut_FLAT();                      // FLAT
 
+uPA.RearSwitch(REAR_ACTIVE);
+// uPA.int8_t RearSwitch(REAR_OFF);
+// uPA.EnableRear();            
+// uPA.DisableRear();           
+
+uPA.SurroundMode(Surr_OFF);  
+// uPA.SurroundMode(Surr_MUSIC);  
+// uPA.SurroundMode(Surr_SIMULATED);  
+// uPA.SurroundMode(Surr_MOVIE);  
+// uPA.Surround_SIMULATED();    
+// uPA.Surround_MUSIC();         
+// uPA.Surround_MOVIE();        
+// uPA.Surround_OFF();          
+
+uPA.EffectControl(-6); // -6 ~ -21
+
+// uPA.PhaseResistor(int8_t val);     // 0 - 255 
+uPA.PhaseResistor(3,3,3,3);
+
+uPA.VoiceCanceller(VOICECANCELLER_OFF); 
+// uPA.VoiceCanceller(VOICECANCELLER_ON); 
+// uPA.DisableVoiceCanceller();
+// uPA.EnableVoiceCanceller();
+  
   uPA.Mute(MUTE_OFF);           //MUTE_OFF
 //  uPA.Mute(MUTE_ON);            // MUTE_ON
 //  uPA.Mute(MUTE_OFF,ATT_LR);    // MUTE_OFF ,ATT_LR  
