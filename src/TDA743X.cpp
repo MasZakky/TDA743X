@@ -433,7 +433,7 @@ int8_t TDA7438::Gain(int8_t val){
 }
     
 int8_t TDA7438::Volume(int8_t val){
-  val = Constrain(val,0,63);
+  val = Constrain(val,0,47);
   if((int8_t)(_DATA[2]&0x3F) == val) return Process_OK;
   
    _DATA[2] = (_DATA[2]&(~(0x3F))) | val;
