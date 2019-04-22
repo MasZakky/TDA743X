@@ -49,7 +49,7 @@ TDA7430 uPA;
 
 void setup() {
   Wire.begin();
-  uPA.begin(0x80);
+  uPA.begin();
   uPA.InstalWire(&Wire);
   // Instal Wire
 
