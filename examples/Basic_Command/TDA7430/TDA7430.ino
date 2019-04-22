@@ -68,11 +68,6 @@ uPA.Balance(0);         // 0 dB ALL OUTPUT (1dB Step)
   // Value   => Out_3BAND,Out_SURR,Out_REAR,Out_OFF, or Out_FLAT 
   // Channel => ATT_LR or ATT_RR    
 
-uPA.RearSwitch(REAR_ACTIVE);
-// uPA.int8_t RearSwitch(REAR_OFF);
-// uPA.EnableRear();            
-// uPA.DisableRear();           
-
 uPA.SurroundMode(Surr_OFF);  
 // uPA.SurroundMode(Surr_MUSIC);  
 // uPA.SurroundMode(Surr_SIMULATED);  
