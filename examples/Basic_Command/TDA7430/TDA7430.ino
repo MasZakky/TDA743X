@@ -7,41 +7,43 @@ void setup() {
   uPA.begin();
 //  uPA.begin(0x80);  // Address
   
-  uPA.InstalWire(&Wire);      // Instal Wire
+uPA.InstalWire(&Wire);      // Instal Wire
 //  uPA.InstalWire(&Wire1);   // Instal Wire1
 //  uPA.InstalWire(&Wire2);   // Instal Wire2
 
-  uPA.UseValue(Use_POSITIVE);   //UsePOSITIVE
+uPA.UseValue(Use_POSITIVE);   //UsePOSITIVE
 //  uPA.UseValue(Use_NEGATIVE);   //UseNEGATIVE
 
-  uPA.Input(1);       // Channel  no 1 Input  
+uPA.Input(1);       // Channel  no 1 Input  
 //  uPA.Input(2);       // Channel  no 2 Input  
 //  uPA.Input(3);       // Channel  no 3 Input  
 //  uPA.Input(4);       // Channel  no 4 Input  
-
-  uPA.Volume(0);      // 0  dB (1dB Step)
-  // UseValue == Use_POSITIVE => 0 ~ 63  => 0 dB ~ -63dB
-  // UseValue == Use_NEGATIVE => -63 ~0  => 0 dB ~ -63dB
+uPA.Volume(0);      // 0  dB (1dB Step)
+  //   UserValue == Use_POSITIVE => Volume 0 ~ 63  => 0dB ~ -31.5dB (0.5dB Step)
+  //   UserValue == Use_NEGATIVE => Volume -63 ~ 0 => -31.5dB ~ 0dB (0.5dB Step)
   
-  uPA.Bass(7);        // 14 dB 
+uPA.Bass(7);        // 14 dB 
   // Value -7 ~ 7  => -14dB ~ 14dB (2dB Step)
   
-  uPA.Middle(7);      // 14 dB
+uPA.Middle(7);      // 14 dB
   // Value -7 ~ 7  => -14dB ~ 14dB (2dB Step);
   
-  uPA.Treble(7);      // 14 dB
+uPA.Treble(7);      // 14 dB
   // Value -7 ~ 7  => -14dB ~ 14dB (2dB Step);
 
-  uPA.Balance(0);         // 0 dB ALL OUTPUT (1dB Step)
+uPA.Balance(0);         // 0 dB ALL OUTPUT (1dB Step)
 //  uPA.Balance(0,ATT_LR);  // 0 dB Output ATT_LR
 //  uPA.Balance(0,ATT_RR);  // 0 dB Output ATT_RR
 //  uPA.Balance(0,ATT_LF);  // 0 dB Output ATT_LF
 //  uPA.Balance(0,ATT_RF);  // 0 dB Output ATT_RF
+  // UserValue == Use_POSITIVE => Balance 0 ~ 79  => 0dB ~ -79dB (1dB Step)
+  // UserValue == Use_NEGATIVE => Balance -79 ~ 0 => -79dB ~ 0dB (1dB Step)
+  // Channel => ATT_LR,ATT_RR,ATT_LF, or ATT_RF 
 
   uPA.NaturalBase(NATURALBASE_ACTIVE);  // NATURALBASE_ACTIVE
 //  uPA.NaturalBase(NATURALBASE_OFF);   // NATURALBASE_OFF
 //  uPA.EnableNaturalBase();            // Enable  or Active
-//  uPA.DisableNaturalBase();           // Disable or Off
+//  uPA.DisableNaturalBase();           // Disable or OFF
 
   uPA.SelectorRecOut(Out_3BAND);          // Channel ATT_LR & ATT_RR  
 //  uPA.SelectorRecOut(Out_SURR);           // Channel ATT_LR & ATT_RR  
@@ -63,6 +65,8 @@ void setup() {
 //  uPA.RecOut_REAR();                      // REAR
 //  uPA.RecOut_OFF();                       // OFF
 //  uPA.RecOut_FLAT();                      // FLAT
+  // Value   => Out_3BAND,Out_SURR,Out_REAR,Out_OFF, or Out_FLAT 
+  // Channel => ATT_LR or ATT_RR    
 
 uPA.RearSwitch(REAR_ACTIVE);
 // uPA.int8_t RearSwitch(REAR_OFF);
@@ -76,7 +80,8 @@ uPA.SurroundMode(Surr_OFF);
 // uPA.Surround_SIMULATED();    
 // uPA.Surround_MUSIC();         
 // uPA.Surround_MOVIE();        
-// uPA.Surround_OFF();          
+// uPA.Surround_OFF();     
+  // Value   => Surr_SIMULATED,Surr_MUSIC,Surr_MOVIE, or Surr_OFF 
 
 uPA.EffectControl(-6); // -6 ~ -21
 
@@ -88,7 +93,7 @@ uPA.VoiceCanceller(VOICECANCELLER_OFF);
 // uPA.DisableVoiceCanceller();
 // uPA.EnableVoiceCanceller();
   
-  uPA.Mute(MUTE_OFF);           //MUTE_OFF
+uPA.Mute(MUTE_OFF);           //MUTE_OFF
 //  uPA.Mute(MUTE_ON);            // MUTE_ON
 //  uPA.Mute(MUTE_OFF,ATT_LR);    // MUTE_OFF ,ATT_LR  
 //  uPA.Mute(MUTE_ON, ATT_RR);    // MUTE_ON  ,ATT_LR
@@ -100,6 +105,8 @@ uPA.VoiceCanceller(VOICECANCELLER_OFF);
 //  uPA.Mute(MUTE_ON, ATT_RR);    // MUTE_ON  ,ATT_RF
 //  uPA.DisableMute();        // Disable
 //  uPA.EnableMute();         // Enable
+  // Value   => MUTE_OFF or MUTE_ON
+  // Channel => ATT_LR,ATT_RR,ATT_LF, or ATT_RF
 
 }
 
