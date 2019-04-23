@@ -6,8 +6,6 @@
   <li><a href="https://www.st.com/resource/en/datasheet/CD00000874.pdf"                           target="_blank">TDA7432</a> OK</li>
   <li><a href="https://www.st.com/resource/en/datasheet/cd00000878.pdf"                           target="_blank">TDA7433</a> OK</li>
   <li><a href="http://pdf.datasheetcatalog.com/datasheet/stmicroelectronics/4062.pdf"             target="_blank">TDA7434</a> OK</li>
-  <li><a href="http://pdf.datasheetcatalog.com/datasheets/105/324990_DS.pdf"                      target="_blank">TDA7435</a></li>
-  <li><a href="http://pdf.datasheetcatalog.com/datasheet/SGSThomsonMicroelectronics/mXruwsz.pdf"  target="_blank">TDA7437</a></li>
   <li><a href="https://www.st.com/resource/en/datasheet/CD00001003.pdf"                           target="_blank">TDA7438</a> OK</li>
   <li><a href="https://www.st.com/resource/en/datasheet/cd00004906.pdf"                           target="_blank">TDA7439</a> OK</li>
 <ul>
