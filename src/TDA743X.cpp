@@ -410,7 +410,9 @@ int8_t TDA7434::MaxInput(int8_t val){
 
 //////////////////////////////////////////////////////
 
-int8_t TDA7438::begin();
+int8_t TDA7438::begin(){
+ _Address = AddrTDA7438; 
+}
 
 int8_t TDA7438::Input(int8_t val){
   val -= 1;
