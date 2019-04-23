@@ -6,10 +6,14 @@
 # Datatypes (KEYWORD1)
 #######################################
 
-TDA743X KEYWORD2
-TDA7430 KEYWORD2
-TDA7431 KEYWORD2
-TDA7432 KEYWORD2 
+TDA743X KEYWORD1
+TDA7430 KEYWORD1
+TDA7431 KEYWORD1
+TDA7432 KEYWORD1 
+TDA7433 KEYWORD1
+TDA7434 KEYWORD1 
+TDA7438 KEYWORD1
+TDA7439 KEYWORD1 
 
 #######################################
 # Methods and Functions (KEYWORD2)
@@ -51,6 +55,12 @@ Loudness	KEYWORD2
 ModeLoudness	KEYWORD2
 EnableModeLoudness	KEYWORD2
 DisableModeLoudness	KEYWORD2
+Gain KEYWORD2
+SymmetricalBassCut KEYWORD2
+ExtendedBassRange KEYWORD2
+RearSwitch KEYWORD2
+EnableRear KEYWORD2
+DisableRear KEYWORD2
 
 #######################################
 # Constants (LITERAL1)
@@ -83,3 +93,9 @@ MUTE_OFF	LITERAL1
 MUTE_ON		LITERAL1
 Loudness_ON	LITERAL1
 Loudness_OFF	LITERAL1
+REAR_OFF LITERAL1
+REAR_ON LITERAL1
+Yes_SymmetricalBassCut LITERAL1
+Not_SymmetricalBassCut LITERAL1
+Not_ExtendedBassRange LITERAL1
+Yes_ExtendedBassRange LITERAL1
